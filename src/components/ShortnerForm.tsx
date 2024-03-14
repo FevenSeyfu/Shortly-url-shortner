@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
 
 const ShortnerForm: React.FC = () => {
   return (
-    <div>ShortnerForm</div>
-  )
-}
+    <div>
+      <input type="text" placeholder="Shorten a link here..." />
 
-export default ShortnerForm
+      <button>Shorten It!</button>
+    </div>
+  );
+};
+
+export default ShortnerForm;

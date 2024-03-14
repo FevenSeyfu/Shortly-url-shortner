@@ -111,17 +111,7 @@ const SiteMap: React.FC = () => {
           </li>
         </ul>
       </div>
-      <div className="relative  bottom-0 text-[13px] bg-neutral-very-dark-blue text-center text-white ">
-        Challenge by{" "}
-        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" className="hover:text-primary-cyan">
-          Frontend Mentor
-        </a>
-        . Coded by{" "}
-        <a href="https://www.frontendmentor.io/profile/FevenSeyfu" className="hover:text-primary-cyan">
-          Feven Seyfu
-        </a>
-        .
-      </div>
+      
     </>
   );
 };
