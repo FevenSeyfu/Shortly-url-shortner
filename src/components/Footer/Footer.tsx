@@ -4,7 +4,7 @@ import CallToAction from "./CallToAction";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="absolute bottom-0 w-full ">
+    <footer className="w-full h-auto md:absolute md:bottom-0 ">
       <CallToAction />
       <SiteMap />
     </footer>

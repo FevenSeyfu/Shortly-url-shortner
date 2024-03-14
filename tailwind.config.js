@@ -7,6 +7,7 @@ export default {
         //Primary
         'primary-cyan': 'hsl(180, 66%, 49%)',
         'primary-dark-violet': 'hsl(257, 27%, 26%)',
+        'primary-light-cyan': 'hsl(180, 66%, 80%)',
         //Secondary
         'secondary-red': 'hsl(0, 87%, 67%)',
         //Neutral

@@ -8,7 +8,7 @@ import InstagramIcon from "../../assets/icons/InstagramIcon";
 const SiteMap: React.FC = () => {
   return (
     <>
-      <div className=" bg-neutral-very-dark-blue text-center text-white flex flex-col h-screen w-full  items-center justify-evenly text-sm relative md:flex-row md:justify-center md:items-start md:h-auto md:text-base md:pt-8">
+      <div className=" bg-neutral-very-dark-blue text-center text-white flex flex-col h-screen w-full  items-center justify-evenly text-sm relative md:flex-row md:justify-center md:items-start md:h-auto md:text-base md:py-8">
         <div className="md:w-2/4 flex justify-center">
           <img src={Logo} alt="Shortly Logo" />
         </div>
