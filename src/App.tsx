@@ -1,15 +1,13 @@
 import React from 'react'
 import Home from './components/Home/Home'
 import Footer from './components/Footer/Footer'
-import ShortnerForm from './components/ShortnerForm'
-import AdvancedStatistics from './components/AdvancedStatistics'
+import Main from './components/Main/Main'
 
 const App = () => {
   return (
     <div>
       <Home />
-      <ShortnerForm />
-      <AdvancedStatistics />
+      <Main />
       <Footer />
       <div className="text-[13px] bg-neutral-very-dark-blue text-center text-white ">
         Challenge by{" "}
