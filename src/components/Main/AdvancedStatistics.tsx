@@ -5,13 +5,13 @@ import CustomizableIcon from "../../assets/images/icon-fully-customizable.svg";
 
 const AdvancedStatistics: React.FC = () => {
   return (
-    <div className="flex flex-col gap-4 items-center px-8 py-12 md:py-24">
+    <div className="flex flex-col gap-4 items-center px-8 py-6 md:py-24">
       <h2 className="font-bold text-2xl md:text-4xl"> Advanced Statistics</h2>
       <p className="md:w-[30rem] text-center text-sm text-neutral-very-dark-blue">
         Track how your links are performing across the web with our advanced
         statistics dashboard.
       </p>
-      <div id="card-container" className="flex flex-col md:flex-row w-full md:w-[80%] gap-8 justify-evenly items-center mt-8 relative">
+      <div id="card-container" className="flex flex-col md:flex-row w-full md:w-[90%] gap-8 justify-evenly items-center mt-8 relative">
      
         <div id="stat-card" className="flex flex-col bg-white rounded-xl p-8 gap-4 relative mt-4 text-center md:text-left">
           <div className="bg-neutral-very-dark-blue rounded-full w-16 h-16 flex justify-center items-center absolute top-[-2rem] left-[40%] md:left-auto">

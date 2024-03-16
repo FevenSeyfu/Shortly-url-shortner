@@ -3,7 +3,7 @@ import Nav from "./Nav";
 
 const Home: React.FC = () => {
   return (
-    <div className="h-screen w-full">
+    <div className="h-full w-full pb-24 md:pb-12">
       <Nav />
       <Hero />
     </div>
