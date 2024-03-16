@@ -5,16 +5,16 @@ import CustomizableIcon from "../../assets/images/icon-fully-customizable.svg";
 
 const AdvancedStatistics: React.FC = () => {
   return (
-    <div className="flex flex-col gap-4 items-center p-24">
+    <div className="flex flex-col gap-4 items-center px-8 py-12 md:py-24">
       <h2 className="font-bold text-2xl md:text-4xl"> Advanced Statistics</h2>
-      <p className="w-[30rem] text-center text-sm text-neutral-very-dark-blue">
+      <p className="md:w-[30rem] text-center text-sm text-neutral-very-dark-blue">
         Track how your links are performing across the web with our advanced
         statistics dashboard.
       </p>
-      <div className="flex flex-row w-[80%] gap-8 justify-evenly items-center mt-8 relative">
-        <hr className="absolute top-[50%] h-4 w-full text-primary-cyan"/>
-        <div id="stat-card" className="flex flex-col bg-white rounded-xl p-8 gap-4 relative ">
-          <div className="bg-neutral-very-dark-blue rounded-full w-16 h-16 flex justify-center items-center absolute top-[-2rem]">
+      <div id="card-container" className="flex flex-col md:flex-row w-full md:w-[80%] gap-8 justify-evenly items-center mt-8 relative">
+     
+        <div id="stat-card" className="flex flex-col bg-white rounded-xl p-8 gap-4 relative mt-4 text-center md:text-left">
+          <div className="bg-neutral-very-dark-blue rounded-full w-16 h-16 flex justify-center items-center absolute top-[-2rem] left-[40%] md:left-auto">
             <img src={BrandIcon} alt="Brand Icon" className="h-10 w-10" />
           </div>
           <h3 className="font-bold text-lg md:text-xl mt-4">Brand Recognition</h3>
@@ -22,8 +22,8 @@ const AdvancedStatistics: React.FC = () => {
           a thing. Branded links help instil confidence in your content.</p>
         </div>
         {/*  */}
-        <div id="stat-card" className="flex flex-col bg-white rounded-xl p-8 gap-4 relative mt-12">
-          <div className="bg-neutral-very-dark-blue rounded-full w-16 h-16 flex justify-center items-center absolute top-[-2rem]">
+        <div id="stat-card" className="flex flex-col bg-white rounded-xl p-8 gap-4 relative mt-8 md:mt-12 text-center md:text-left">
+          <div className="bg-neutral-very-dark-blue rounded-full w-16 h-16 flex justify-center items-center absolute top-[-2rem] left-[40%] md:left-auto">
             <img src={RecordsIcon} alt="Brand Icon" className="h-10 w-10" />
           </div>
           <h3 className="font-bold text-lg md:text-xl mt-4">Detailed Records</h3>
@@ -33,8 +33,8 @@ const AdvancedStatistics: React.FC = () => {
           </p>
         </div>
         {/*  */}
-        <div id="stat-card" className="flex flex-col bg-white rounded-xl p-8 gap-4 relative mt-24 ">
-          <div className="bg-neutral-very-dark-blue rounded-full w-16 h-16 flex justify-center items-center absolute top-[-2rem]">
+        <div id="stat-card" className="flex flex-col bg-white rounded-xl p-8 gap-4 relative mt-8 md:mt-24 text-center md:text-left">
+          <div className="bg-neutral-very-dark-blue rounded-full w-16 h-16 flex justify-center items-center absolute top-[-2rem] left-[40%] md:left-auto">
             <img src={CustomizableIcon} alt="Brand Icon" className="h-10 w-10" />
           </div>
           <h3 className="font-bold text-lg md:text-xl mt-4">Fully Customizable</h3>
