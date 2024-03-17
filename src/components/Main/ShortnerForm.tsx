@@ -1,22 +1,45 @@
 import React, { useState } from "react";
 import Result from "./Result";
-import { GiShorts } from "react-icons/gi";
+import axios from "axios";
 
 const ErrorMessage = () => {
-  return <p className="text-secondary-red italic text-sm md:py-1 pb-1">Please add a link</p>;
+  return (
+    <p className="text-secondary-red italic text-sm md:py-1 pb-1">
+      Please add a link
+    </p>
+  );
 };
 
 const ShortnerForm: React.FC = () => {
   const [shortlyInput, setShortlyInput] = useState({
-    value: "",
+    url: "",
     isTouched: false,
   });
+  const postData = async (url: string) => {
+    try {
+      const response = await axios.post(
+        'https://api-ssl.bitly.com/v4/shorten',
+        `url=${encodeURIComponent(url)}`,
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        }
+      );
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.error('Error:', error);
+      throw error;
+    }
+  };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setShortlyInput({ value: "", isTouched: false });
+    postData(shortlyInput.url)
+    setShortlyInput({ url: "", isTouched: false });
   };
   const getIsInputValid = () => {
-    return shortlyInput.value.trim() !== "";
+    return shortlyInput.url.trim() !== "";
   };
 
   return (
@@ -29,10 +52,14 @@ const ShortnerForm: React.FC = () => {
           <input
             type="text"
             placeholder="Shorten a link here..."
-            className={`p-3 rounded-md text-lg text-neutral-very-dark-blue ${shortlyInput.isTouched && !getIsInputValid() && ('focus:outline-secondary-red border-2 border-secondary-red text-secondary-red placeholder:text-secondary-red md:mt-6 text-lg')}`}
-            value={shortlyInput.value}
+            className={`p-3 rounded-md text-lg text-neutral-very-dark-blue ${
+              shortlyInput.isTouched &&
+              !getIsInputValid() &&
+              "focus:outline-secondary-red border-2 border-secondary-red text-secondary-red placeholder:text-secondary-red md:mt-6 text-lg"
+            }`}
+            value={shortlyInput.url}
             onChange={(e) =>
-              setShortlyInput({ value: e.target.value, isTouched: true })
+              setShortlyInput({ url: e.target.value, isTouched: true })
             }
           />
           {shortlyInput.isTouched && !getIsInputValid() && <ErrorMessage />}
@@ -45,7 +72,7 @@ const ShortnerForm: React.FC = () => {
           Shorten It!
         </button>
       </form>
-      {shortlyInput.value !== "" && <Result />}
+      {shortlyInput.url !== "" && <Result />}
     </div>
   );
 };
