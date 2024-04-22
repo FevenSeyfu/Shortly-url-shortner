@@ -29,7 +29,7 @@ const ShortnerForm: React.FC<ShortnerFormProps> = ({ onAddUrl }) => {
   //     const apiResponse = await axios.post(endpoint, linkRequest, {
   //       headers: {
   //         'Content-Type': 'application/json',
-  //         'apikey': '4e414a98d2324c4a9bb3f3d196060a21'
+  //         'apikey': ''
   //       }
   //     });
 
