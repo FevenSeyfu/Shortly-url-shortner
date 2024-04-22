@@ -45,51 +45,44 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Solution URL](https://github.com/FevenSeyfu/Shortly-url-shortner)
+- Live Site URL: [Live site URL](https://url-shortner-landing-page.netlify.app/)
 
 ## My process
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- [TailwindCSS](https://tailwindcss.com/) - For styles
+- [Vite](https://vitejs.dev/) - Build Tool
+- [tinyurl API](https://tinyurl.com/app/dev) - Rest API
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+While Completing this project how to handle 3rd party APIs and integrating with react.
 
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
 ```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
+```Ts
+const shorten = async (url: string) => {
+    try {
+      const response = await axios.post('https://tinyurl.com/api-create.php', null, {
+        params: {
+          url: url
+        }
+      });
+      const shortUrl = response.data;
+      onAddUrl({ id: url.length + 1, longUrl: url, shortUrl: shortUrl });
+    
+    return shortUrl;
+  } catch (error) {
+    console.error('Error shortening URL:', error);
+  }
+  }
 ```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+As a continous development I want to add user authentication to handle Login/Registration and to store shortened urls for user to access later.
 
 ## Author
 
