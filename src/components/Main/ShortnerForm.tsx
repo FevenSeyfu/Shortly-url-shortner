@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import Result from "./Result";
 import axios from "axios";
 
+interface ShortnerFormProps {
+  onAddUrl: (newUrl: { id: number; longUrl: string; shortUrl: string }) => void;
+}
+
 const ErrorMessage = () => {
   return (
     <p className="text-secondary-red italic text-sm md:py-1 pb-1">
@@ -10,36 +14,39 @@ const ErrorMessage = () => {
   );
 };
 
-const ShortnerForm: React.FC = () => {
-  const [shortlyInput, setShortlyInput] = useState({
-    url: "",
-    isTouched: false,
-  });
-  const postData = async (url: string) => {
+const ShortnerForm: React.FC<ShortnerFormProps> = ({ onAddUrl }) => {
+  const [longUrl, setLongUrl] = useState('');
+
+  const shorten = async (url: string) => {
+    const endpoint = 'https://api.rebrandly.com/v1/links';
+    const linkRequest = {
+      destination: url,
+      domain: { fullName: 'rebrand.ly' },
+    };
+
     try {
-      const response = await axios.post(
-        'https://api-ssl.bitly.com/v4/shorten',
-        `url=${encodeURIComponent(url)}`,
-        {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
+      const apiResponse = await axios.post(endpoint, linkRequest, {
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': '4e414a98d2324c4a9bb3f3d196060a21'
         }
-      );
-      console.log(response.data);
-      return response.data;
+      });
+
+      const link = apiResponse.data;
+      onAddUrl({ id: url.length + 1, longUrl: url, shortUrl: link.shortUrl });
+    
     } catch (error) {
-      console.error('Error:', error);
-      throw error;
+      console.error('Error shortening URL:', error);
     }
   };
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
-    postData(shortlyInput.url)
-    setShortlyInput({ url: "", isTouched: false });
+    await shorten(`https://www.${longUrl}`);
+    setLongUrl('');
   };
   const getIsInputValid = () => {
-    return shortlyInput.url.trim() !== "";
+    return longUrl.trim() !== "";
   };
 
   return (
@@ -53,16 +60,15 @@ const ShortnerForm: React.FC = () => {
             type="text"
             placeholder="Shorten a link here..."
             className={`p-3 rounded-md text-lg text-neutral-very-dark-blue ${
-              shortlyInput.isTouched &&
               !getIsInputValid() &&
               "focus:outline-secondary-red border-2 border-secondary-red text-secondary-red placeholder:text-secondary-red md:mt-6 text-lg"
             }`}
-            value={shortlyInput.url}
+            value={longUrl}
             onChange={(e) =>
-              setShortlyInput({ url: e.target.value, isTouched: true })
+              setLongUrl(e.target.value)
             }
           />
-          {shortlyInput.isTouched && !getIsInputValid() && <ErrorMessage />}
+          {!getIsInputValid() && <ErrorMessage />}
         </div>
         <button
           className="bg-primary-cyan w-full rounded-lg font-bold  text-xl py-3  md:w-[20%] md:text-lg"
@@ -72,7 +78,6 @@ const ShortnerForm: React.FC = () => {
           Shorten It!
         </button>
       </form>
-      {shortlyInput.url !== "" && <Result />}
     </div>
   );
 };
