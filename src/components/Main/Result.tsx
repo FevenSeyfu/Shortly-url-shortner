@@ -17,7 +17,7 @@ const Result: React.FC<ResultProps> = ({ urls }) => {
   const handleCopy = () => setCopied(!copied);
   return (
     <>
-      <ul className="flex flex-col gap-6 md:gap-4">
+      <ul className="flex flex-col gap-6 md:gap-4 w-[90%]">
       {urls.map((url) => (
         <li className="bg-white rounded-md flex flex-col items-start  md:flex-row md:justify-between md:items-center text-lg font-medium" key={url.id}>
           <div

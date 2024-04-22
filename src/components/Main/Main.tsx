@@ -17,10 +17,10 @@ const Main: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto">
+    <main className="bg-neutral-gray w-full h-full flex flex-col items-center mt-12 pb-12 ">
       <ShortnerForm onAddUrl={handleAddUrl} />
-      <Result urls={urls} />
-    </div>
+      <Result urls={urls}/>
+    </main>
   );
 };
 
